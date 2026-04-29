@@ -51,8 +51,10 @@ public class SpaceShipController : MonoBehaviour
 
     void OnSpecial(InputAction.CallbackContext context)
     {
+        if(ShootingPoint == null) return;
         if (Global.instance.specialBar >=1)
         {
+            print(Global.instance.specialBar);
             Global.instance.ResetSpecial();
             Instantiate(SpecialPrefab, ShootingPoint.position, quaternion.identity);
             
@@ -70,7 +72,7 @@ public class SpaceShipController : MonoBehaviour
     {
         move.action.Disable();
         shot.action.Disable();
-        Special.action.Dispose();
+        Special.action.Disable();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
